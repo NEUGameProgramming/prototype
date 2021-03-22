@@ -5,7 +5,6 @@ using UnityEngine;
 public class ConeBehavior : MonoBehaviour
 {
     public bool gameOver = false;
-    public float lookCenter = 90f;
     public float lookRadius = 45f;
     public float lookSpeed = 1;
     float colliderCenterY = 0.7879247f;
