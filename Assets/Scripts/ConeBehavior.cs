@@ -8,6 +8,17 @@ public class ConeBehavior : MonoBehaviour
     public float lookCenter = 90f;
     public float lookRadius = 45f;
     public float lookSpeed = 1;
+    float colliderCenterY = 0.7879247f;
+    float colliderSizeY = 1.58784f;
+    float colliderSizeZ = 2.204834f;
+    public int raysVertical;
+    public int raysHorizontal;
+
+    Vector3 farmerPosition;
+    Vector3 cowPosition;
+    Vector3 direction;
+    Vector3 perpendicular;
+
     void Start()
     {
         
@@ -26,7 +37,35 @@ public class ConeBehavior : MonoBehaviour
     {
         if (other.CompareTag("Cow"))
         {
-            gameOver = true;
+            farmerPosition = gameObject.transform.position;
+            cowPosition = other.transform.position;
+            direction = cowPosition - farmerPosition;
+            perpendicular = Vector3.Cross(Vector3.up, direction).normalized;
+            gameObject.GetComponent<MeshCollider>().enabled = false;
+            CastRays();
         }
+    }
+
+    void CastRays()
+    {
+        for (int i = -raysHorizontal / 2; i < raysHorizontal / 2; i++)
+        {
+            Vector3 offset = perpendicular * -3 * i * colliderSizeZ / raysHorizontal;
+            for (int j = 0; j < raysVertical; j++)
+            {
+                float y = (colliderCenterY - colliderSizeY / 2) + colliderSizeY / raysVertical * j;
+                Vector3 rayDir = cowPosition - farmerPosition + new Vector3(offset.x, 2 * y, offset.z);
+                //Debug.DrawRay(farmerPosition, rayDir, Color.red, 20);
+                RaycastHit hit;
+                if (Physics.Raycast(farmerPosition, rayDir, out hit, Vector3.Distance(farmerPosition, cowPosition) + 5))
+                {
+                    if (hit.collider.gameObject.CompareTag("Cow"))
+                    {
+                        gameOver = true;
+                    }
+                }
+            }
+        }
+        gameObject.GetComponent<MeshCollider>().enabled = true;
     }
 }
