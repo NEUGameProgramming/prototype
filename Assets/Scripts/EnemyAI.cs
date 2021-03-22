@@ -14,6 +14,7 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(transform.position);
         wanderPoints = GameObject.FindGameObjectsWithTag("Wander Point" + gameObject.tag);
         FindNextPoint();
     }
