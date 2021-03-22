@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Cow
+  - Cone
+  - 1
+  - 2
+  - Wander Point1
+  - Wander Point2
   layers:
   - Default
   - TransparentFX
