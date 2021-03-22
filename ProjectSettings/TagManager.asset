@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Cow
   - Cone
+  - 1
+  - 2
+  - Wander Point1
+  - Wander Point2
   layers:
   - Default
   - TransparentFX

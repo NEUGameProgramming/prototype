@@ -59,6 +59,7 @@
     <Compile Include="Assets/Scripts/ConeBehavior.cs" />
     <Compile Include="Assets/Scripts/MoveToClick.cs" />
     <Compile Include="Assets/Scripts/LocalPanning.cs" />
+    <Compile Include="Assets/Scripts/EnemyAI.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets/Level 1/Imports/VertexColorFarmAnimals/Shaders/VertexColorUnlit.shader" />

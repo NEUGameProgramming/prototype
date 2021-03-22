@@ -11,8 +11,8 @@ public class ConeBehavior : MonoBehaviour
     float colliderCenterY = 0.7879247f;
     float colliderSizeY = 1.58784f;
     float colliderSizeZ = 2.204834f;
-    public int raysVertical;
-    public int raysHorizontal;
+    int raysVertical = 20;
+    int raysHorizontal = 20;
 
     Vector3 farmerPosition;
     Vector3 cowPosition;
@@ -29,7 +29,8 @@ public class ConeBehavior : MonoBehaviour
     {
         if (!gameOver)
         {
-            transform.rotation = Quaternion.Euler(new Vector3(0, lookCenter + lookRadius * Mathf.Sin(Time.time / 2 * lookSpeed), 0));
+            transform.rotation = Quaternion.Euler(new Vector3(0, lookRadius * Mathf.Sin(Time.time / 2 * lookSpeed), 0));
+            transform.rotation *= gameObject.transform.parent.rotation;
         }
     }
 
