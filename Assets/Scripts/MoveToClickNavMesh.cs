@@ -13,6 +13,10 @@ public class MoveToClickNavMesh : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (curCowIndex == cowIndex)
+        {
+            cowObj = gameObject;
+        }
         mNav = GetComponent<NavMeshAgent>();
     }
 

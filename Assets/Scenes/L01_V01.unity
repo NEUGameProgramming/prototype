@@ -5025,7 +5025,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1975835082618368, guid: f7d124383d506c64e9ebc4f3e0cbceda, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4284163042863040, guid: f7d124383d506c64e9ebc4f3e0cbceda, type: 3}
       propertyPath: m_RootOrder
@@ -5363,7 +5363,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1975835082618368, guid: f7d124383d506c64e9ebc4f3e0cbceda, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4284163042863040, guid: f7d124383d506c64e9ebc4f3e0cbceda, type: 3}
       propertyPath: m_RootOrder
@@ -6237,7 +6237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1975835082618368, guid: f7d124383d506c64e9ebc4f3e0cbceda, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4284163042863040, guid: f7d124383d506c64e9ebc4f3e0cbceda, type: 3}
       propertyPath: m_RootOrder
@@ -7363,7 +7363,7 @@ Transform:
   m_GameObject: {fileID: 446864389}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: -0, z: 0}
-  m_LocalScale: {x: 64.04364, y: 30, z: 62.56952}
+  m_LocalScale: {x: 100, y: 30, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -10649,7 +10649,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1975835082618368, guid: f7d124383d506c64e9ebc4f3e0cbceda, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4284163042863040, guid: f7d124383d506c64e9ebc4f3e0cbceda, type: 3}
       propertyPath: m_RootOrder
@@ -14458,8 +14458,8 @@ MonoBehaviour:
   timerText: {fileID: 669880954}
   gameText: {fileID: 1978925083}
   nextLevel: 
-  GameOverSFX: {fileID: 8300000, guid: 75c31c9c894b34be2a291008192ae25c, type: 3}
-  GameWinSFX: {fileID: 8300000, guid: 3386cd40fecd943a7a196423bce605f0, type: 3}
+  GameOverSFX: {fileID: 8300000, guid: be52133097a0740d2855d657527c16ea, type: 3}
+  GameWinSFX: {fileID: 8300000, guid: c6fd37b57eebe499eac91c9758548e9d, type: 3}
 --- !u!4 &861504933
 Transform:
   m_ObjectHideFlags: 0
@@ -16072,7 +16072,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.12940954, y: -0.8365163, z: 0.22414392, w: 0.48296285}
-  m_LocalPosition: {x: 65.9, y: 40.4, z: 48.5}
+  m_LocalPosition: {x: 62.1, y: 40.4, z: 48.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -16091,8 +16091,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   edgeScrollingBoundary: 10
-  cameraSpeed: 10
-  cameraDistance: 50
+  cameraSpeed: 20
   selectedObject: {fileID: 0}
 --- !u!82 &963194230
 AudioSource:
@@ -16104,9 +16103,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 080b623c3822f415598c7e9a974c5666, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ebd3c5a3153d747119f93165b8e26ba5, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.25
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -17396,7 +17395,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1975835082618368, guid: f7d124383d506c64e9ebc4f3e0cbceda, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4284163042863040, guid: f7d124383d506c64e9ebc4f3e0cbceda, type: 3}
       propertyPath: m_RootOrder
@@ -19954,7 +19953,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1975835082618368, guid: f7d124383d506c64e9ebc4f3e0cbceda, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4284163042863040, guid: f7d124383d506c64e9ebc4f3e0cbceda, type: 3}
       propertyPath: m_RootOrder
@@ -20530,7 +20529,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.42959133
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 2fc62152bca3c448094b937efa2e8607, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: f2c7b645ef23f4e9fb79f02341dcf4a8, type: 2}
 --- !u!4 &1267075137
 Transform:
   m_ObjectHideFlags: 0
@@ -24825,7 +24824,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1975835082618368, guid: f7d124383d506c64e9ebc4f3e0cbceda, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4284163042863040, guid: f7d124383d506c64e9ebc4f3e0cbceda, type: 3}
       propertyPath: m_RootOrder
@@ -28468,7 +28467,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1975835082618368, guid: f7d124383d506c64e9ebc4f3e0cbceda, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4284163042863040, guid: f7d124383d506c64e9ebc4f3e0cbceda, type: 3}
       propertyPath: m_RootOrder
@@ -29681,7 +29680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1975835082618368, guid: f7d124383d506c64e9ebc4f3e0cbceda, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4284163042863040, guid: f7d124383d506c64e9ebc4f3e0cbceda, type: 3}
       propertyPath: m_RootOrder
@@ -32513,7 +32512,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1975835082618368, guid: f7d124383d506c64e9ebc4f3e0cbceda, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4284163042863040, guid: f7d124383d506c64e9ebc4f3e0cbceda, type: 3}
       propertyPath: m_RootOrder
@@ -33638,7 +33637,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1975835082618368, guid: f7d124383d506c64e9ebc4f3e0cbceda, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4284163042863040, guid: f7d124383d506c64e9ebc4f3e0cbceda, type: 3}
       propertyPath: m_RootOrder
@@ -33980,7 +33979,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1975835082618368, guid: f7d124383d506c64e9ebc4f3e0cbceda, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4284163042863040, guid: f7d124383d506c64e9ebc4f3e0cbceda, type: 3}
       propertyPath: m_RootOrder
