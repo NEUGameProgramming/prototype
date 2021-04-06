@@ -10,6 +10,9 @@ TagManager:
   - 2
   - Wander Point1
   - Wander Point2
+  - Safety
+  - 3
+  - Wander Point3
   layers:
   - Default
   - TransparentFX

@@ -12,22 +12,29 @@ public class EnemyAI : MonoBehaviour
     int currentDestinationIndex = 0;
     bool destinationForward = false;
 
+    public bool isStatic;
+
     void Start()
     {
-        Debug.Log(transform.position);
-        wanderPoints = GameObject.FindGameObjectsWithTag("Wander Point" + gameObject.tag);
-        FindNextPoint();
+        if (!isStatic)
+        {
+            wanderPoints = GameObject.FindGameObjectsWithTag("Wander Point" + gameObject.tag);
+            FindNextPoint();
+        }
     }
 
     void Update()
     {
-        if (Vector3.Distance(gameObject.transform.position, nextDestination) < .5f)
+        if (!isStatic && !GameManager.isGameOver)
         {
-            FindNextPoint();
-        }
+            if (Vector3.Distance(gameObject.transform.position, nextDestination) < .5f)
+            {
+                FindNextPoint();
+            }
 
-        FaceTarget(nextDestination);
-        transform.position = Vector3.MoveTowards(transform.position, nextDestination, enemySpeed * Time.deltaTime);
+            FaceTarget(nextDestination);
+            transform.position = Vector3.MoveTowards(transform.position, nextDestination, enemySpeed * Time.deltaTime);
+        }
     }
 
     void FindNextPoint()

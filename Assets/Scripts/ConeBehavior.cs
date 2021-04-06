@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ConeBehavior : MonoBehaviour
 {
-    public bool gameOver = false;
     public float lookRadius = 45f;
+    public float lookCenter = 90f;
     public float lookSpeed = 1;
     float colliderCenterY = 0.7879247f;
     float colliderSizeY = 1.58784f;
@@ -18,24 +18,27 @@ public class ConeBehavior : MonoBehaviour
     Vector3 direction;
     Vector3 perpendicular;
 
+    GameManager manager;
+
+    public bool rotation;
+
     void Start()
     {
-        
+        manager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!gameOver)
+        if (rotation && !GameManager.isGameOver)
         {
-            transform.rotation = Quaternion.Euler(new Vector3(0, lookRadius * Mathf.Sin(Time.time / 2 * lookSpeed), 0));
-            transform.rotation *= gameObject.transform.parent.rotation;
+            transform.rotation = Quaternion.Euler(new Vector3(0, lookCenter + lookRadius * Mathf.Sin(Time.time / 2 * lookSpeed), 0));
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Cow"))
+        if (!GameManager.isGameOver && other.CompareTag("Player"))
         {
             farmerPosition = gameObject.transform.position;
             cowPosition = other.transform.position;
@@ -48,20 +51,30 @@ public class ConeBehavior : MonoBehaviour
 
     void CastRays()
     {
+        bool stopCasting = false;
         for (int i = -raysHorizontal / 2; i < raysHorizontal / 2; i++)
         {
+            if (stopCasting)
+            {
+                break;
+            }
             Vector3 offset = perpendicular * -3 * i * colliderSizeZ / raysHorizontal;
             for (int j = 0; j < raysVertical; j++)
             {
+                if (stopCasting)
+                {
+                    break;
+                }
                 float y = (colliderCenterY - colliderSizeY / 2) + colliderSizeY / raysVertical * j;
                 Vector3 rayDir = cowPosition - farmerPosition + new Vector3(offset.x, 2 * y, offset.z);
                 //Debug.DrawRay(farmerPosition, rayDir, Color.red, 20);
                 RaycastHit hit;
                 if (Physics.Raycast(farmerPosition, rayDir, out hit, Vector3.Distance(farmerPosition, cowPosition) + 5))
                 {
-                    if (hit.collider.gameObject.CompareTag("Cow"))
+                    if (hit.collider.gameObject.CompareTag("Player"))
                     {
-                        gameOver = true;
+                        stopCasting = true;
+                        manager.LevelLost();
                     }
                 }
             }

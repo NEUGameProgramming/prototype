@@ -8,6 +8,7 @@ public class LocalPanning : MonoBehaviour
     public float cameraSpeed = 10f;
     public float cameraDistance = 50f;
     public GameObject selectedObject = null;
+    Vector3 lockDistance = new Vector3(60f, 37f, 33f);
 
     // Start is called before the first frame update
     void Start()
@@ -18,9 +19,11 @@ public class LocalPanning : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (selectedObject)
-        {
+        selectedObject = MoveToClickNavMesh.cowObj;
 
+        if (Input.GetKeyDown("f") && selectedObject)
+        {
+            FocusOnTarget();
         }
         else
         {
@@ -52,11 +55,6 @@ public class LocalPanning : MonoBehaviour
 
     public void FocusOnTarget()
     {
-        transform.position = selectedObject.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z) + Vector3.forward * cameraDistance;
-    }
-
-    public void SetFocus(GameObject focus)
-    {
-        selectedObject = focus;
+        transform.position = selectedObject.transform.position + lockDistance;
     }
 }
