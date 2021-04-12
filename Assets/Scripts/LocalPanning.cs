@@ -7,17 +7,21 @@ public class LocalPanning : MonoBehaviour
     public int edgeScrollingBoundary = 10;
     public float cameraSpeed = 20f;
     public GameObject selectedObject = null;
-    Vector3 lockDistance = new Vector3(60f, 37f, 33f);
+    Vector3 lockDistance;
+
+    public AudioClip mooSFX;
 
     float currentRotation;
 
     // Start is called before the first frame update
     void Start()
     {
+        currentRotation = Camera.main.transform.eulerAngles.y;
+        lockDistance = new Vector3(Mathf.Sin((currentRotation + 180) * Mathf.PI / 180) * 65, 37f,
+            Mathf.Cos((currentRotation + 180) * Mathf.PI / 180) * 50);
+
         selectedObject = MoveToClickNavMesh.cowObj;
         FocusOnTarget();
-
-        currentRotation = -120f;
     }
 
     // Update is called once per frame
@@ -42,6 +46,10 @@ public class LocalPanning : MonoBehaviour
         if (Input.GetKeyDown("r"))
         {
             RotateCamera();
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            AudioSource.PlayClipAtPoint(mooSFX, Camera.main.transform.position);
         }
         if ((Input.mousePosition.x > Screen.width - edgeScrollingBoundary) || (Input.GetKey("d")))
         {
@@ -76,6 +84,8 @@ public class LocalPanning : MonoBehaviour
     {
         currentRotation -= 90f;
         transform.rotation = Quaternion.Euler(30f, currentRotation, 0f);
+        lockDistance = new Vector3(Mathf.Sin((currentRotation + 180) * Mathf.PI / 180) * 60, 37f,
+            Mathf.Cos((currentRotation + 180) * Mathf.PI / 180) * 60);
     }
 
     void ZoomCamera(float scroll)
