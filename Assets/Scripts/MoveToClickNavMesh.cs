@@ -10,6 +10,8 @@ public class MoveToClickNavMesh : MonoBehaviour
     public int cowIndex = 0;
     public static GameObject cowObj;
 
+    Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,9 @@ public class MoveToClickNavMesh : MonoBehaviour
             cowObj = gameObject;
         }
         mNav = GetComponent<NavMeshAgent>();
+
+        anim = GetComponent<Animator>();
+        anim.SetInteger("animState", 0);
     }
 
     // Update is called once per frame
@@ -29,6 +34,16 @@ public class MoveToClickNavMesh : MonoBehaviour
         }
         if (!GameManager.isGameOver)
         {
+
+            if (mNav.velocity != Vector3.zero)
+            {
+                anim.SetInteger("animState", 1);
+            } else
+            {
+                anim.SetInteger("animState", 0);
+            }
+          
+
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Input.GetMouseButtonDown(0) && (curCowIndex == cowIndex))
