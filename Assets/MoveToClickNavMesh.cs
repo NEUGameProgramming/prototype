@@ -32,8 +32,8 @@ public class MoveToClickNavMesh : MonoBehaviour
         {
             cowObj = gameObject;
         }
-        if (!GameManager.isGameOver)
-        {
+        //if (!GameManager.isGameOver)
+        //{
 
             if (mNav.velocity != Vector3.zero)
             {
@@ -63,6 +63,6 @@ public class MoveToClickNavMesh : MonoBehaviour
                 //    moving = true;
                 //}
             }
-        }
+        //}
     }
 }
