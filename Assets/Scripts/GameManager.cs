@@ -78,10 +78,10 @@ public class GameManager : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                Debug.Log("seen 0");
+                Debug.Log("seen 1");
                 MoveToClickNavMesh.curCowIndex = 1;
             }
-            if (Input.GetKeyDown(KeyCode.Alpha0))
+            if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 Debug.Log("seen 0");
                 MoveToClickNavMesh.curCowIndex = 0;
