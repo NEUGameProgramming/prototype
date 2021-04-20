@@ -27,7 +27,7 @@ public class LocalPanning : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        selectedObject = MoveToClickNavMesh.cowObj;
+        
 
         if (Input.GetKeyDown("f") && selectedObject)
         {
@@ -46,10 +46,13 @@ public class LocalPanning : MonoBehaviour
         if (Input.GetKeyDown("r"))
         {
             RotateCamera();
+            FocusOnTarget();
+
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2))
         {
             AudioSource.PlayClipAtPoint(mooSFX, Camera.main.transform.position);
+            FocusOnTarget();
         }
         if ((Input.mousePosition.x > Screen.width - edgeScrollingBoundary) || (Input.GetKey("d")))
         {
@@ -77,7 +80,9 @@ public class LocalPanning : MonoBehaviour
 
     public void FocusOnTarget()
     {
-        transform.position = selectedObject.transform.position + lockDistance;
+        selectedObject = MoveToClickNavMesh.cowObj;
+        transform.position = selectedObject.transform.position + lockDistance + Vector3.down;
+        Camera.main.orthographicSize = 20;
     }
 
     void RotateCamera()
@@ -92,7 +97,7 @@ public class LocalPanning : MonoBehaviour
     {
         if ((Camera.main.orthographicSize > 5 && scroll < 0) || (Camera.main.orthographicSize < 100 && scroll > 0))
         {
-            Camera.main.orthographicSize += scroll;
+            Camera.main.orthographicSize += scroll * 10;
         }
     }
 }

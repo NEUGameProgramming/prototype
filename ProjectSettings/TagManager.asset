@@ -13,6 +13,10 @@ TagManager:
   - Safety
   - 3
   - Wander Point3
+  - SF_Door
+  - Card
+  - Enemy
+  - wanderpointAlien1
   layers:
   - Default
   - TransparentFX

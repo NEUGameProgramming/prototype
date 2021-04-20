@@ -1538,11 +1538,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2750536015425250604}
-  - component: {fileID: 8977816796590965446}
   - component: {fileID: 3664451823584422209}
+  - component: {fileID: 9035750647000173177}
   m_Layer: 0
   m_Name: Villager
-  m_TagString: 2
+  m_TagString: 3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1563,19 +1563,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &8977816796590965446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2744035215387846840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6d239731ef2941b0b8eafa3ac09b7e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemySpeed: 5
 --- !u!114 &3664451823584422209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1592,6 +1579,22 @@ MonoBehaviour:
   m_Area: 0
   m_IgnoreFromBuild: 1
   m_AffectedAgents: ffffffff
+--- !u!114 &9035750647000173177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2744035215387846840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 957cbbf5645ef0643be34afc9cc2e13f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  test: 0
+  test2: {fileID: 0}
+  enemySpeed: 5
+  isStatic: 0
 --- !u!1 &2920019525642700832
 GameObject:
   m_ObjectHideFlags: 0
@@ -3881,6 +3884,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2750536015425250604}
     m_Modifications:
+    - target: {fileID: 1082990702984250898, guid: 3110bdbfe576c43f9add8e7d835f9e35, type: 3}
+      propertyPath: rotation
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082990702984250898, guid: 3110bdbfe576c43f9add8e7d835f9e35, type: 3}
+      propertyPath: lookCenter
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082990702984250898, guid: 3110bdbfe576c43f9add8e7d835f9e35, type: 3}
+      propertyPath: lookRadius
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 1082990702984250899, guid: 3110bdbfe576c43f9add8e7d835f9e35, type: 3}
       propertyPath: m_RootOrder
       value: 1

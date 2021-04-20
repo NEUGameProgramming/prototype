@@ -51,18 +51,23 @@ public class GameManager : MonoBehaviour
 
         if (!isGameOver)
         {
+            /*
             if (countdown > 0)
             {
                 countdown -= Time.deltaTime;
             }
+            
             else
             {
                 countdown = 0.0f;
                 LevelLost();
             }
+            */
 
-            SetTimerText();
+            //SetTimerText();
 
+            /* moved to MoveToClickNavMesh
+             * 
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 Debug.Log("seen");
@@ -86,6 +91,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log("seen 0");
                 MoveToClickNavMesh.curCowIndex = 0;
             }
+            */
 
             if (AllCowsSafe())
             {
@@ -94,10 +100,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /*
     void SetTimerText()
     {
         timerText.text = countdown.ToString("f2");
     }
+    */
 
     bool AllCowsSafe()
     {
