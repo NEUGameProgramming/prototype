@@ -7,21 +7,20 @@ using UnityEngine.AI;
 public class AlienAI : MonoBehaviour
 {
     
-
     public enum FSMStates
     {
-        PATROL, CHASE, ATTACK, DEAD
+        PATROL//, CHASE, ATTACK, DEAD
     }
 
     public FSMStates currentState;
 
-    public float enemySpeed = 5;
+    //public float enemySpeed = 5;
 
-    public int chaseDistance = 10;
+    //public int chaseDistance = 10;
 
-    public float attackDistance = 5;
+    //public float attackDistance = 5;
 
-    public GameObject player;
+    //public GameObject player;
 
     //public GameObject[] spellProjectiles;
 
@@ -29,13 +28,13 @@ public class AlienAI : MonoBehaviour
 
     //public float shootRate = 2.0f;
 
-    public GameObject deadVFX;
+    //public GameObject deadVFX;
 
-    public Transform enemyEyes;
+    //public Transform enemyEyes;
 
-    public float fieldOfView = 45;
+    //public float fieldOfView = 45;
 
-    public int wanderOffset = 0;
+    //public int wanderOffset = 0;
 
     public int alienNumber = 0;
 
@@ -52,15 +51,15 @@ public class AlienAI : MonoBehaviour
     //keeps track of what wander point this is heading towards
     int currentDestinationIndex = 0;
 
-    float distanceToPlayer;
+    //float distanceToPlayer;
 
-    float elapsedTime = 0;
+    //float elapsedTime = 0;
 
     //EnemyHealth enemyHealth;
 
-    int health;
+    //int health;
 
-    Transform deadTransform;
+    //Transform deadTransform;
 
     NavMeshAgent agent;
 
@@ -74,7 +73,7 @@ public class AlienAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+        //distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
         //health = enemyHealth.currentHealth;
 
@@ -90,16 +89,18 @@ public class AlienAI : MonoBehaviour
             case FSMStates.PATROL:
                 UpdatePatrolState();
                 break;
+            /*
             case FSMStates.CHASE:
                 UpdateChaseState();
                 break;
             case FSMStates.ATTACK:
                 UpdateAttackState();
                 break;
+            */
 
         }
 
-        elapsedTime += Time.deltaTime;
+        //elapsedTime += Time.deltaTime;
 
 
     }
@@ -108,7 +109,7 @@ public class AlienAI : MonoBehaviour
     {
         wanderPoints = GameObject.FindGameObjectsWithTag("wanderpointAlien" + alienNumber);
         anim = GetComponent<Animator>();
-        player = GameObject.FindGameObjectWithTag("Player");
+        //player = GameObject.FindGameObjectWithTag("Player");
         //wandTip = GameObject.FindGameObjectWithTag("EnemyWandTip");
         currentState = FSMStates.PATROL;
         //enemyHealth = GetComponent<EnemyHealth>();
@@ -126,16 +127,19 @@ public class AlienAI : MonoBehaviour
         //resets how far this object should stop.
         //agent.stoppingDistance = 0;
 
-        agent.speed = 3.5f;
+        //agent.speed = 3.5f;
 
+        
         if (Vector3.Distance(transform.position, nextDestination) < 2)
         {
             FindNextPoint();
         }
+        /*
         else if (distanceToPlayer <= chaseDistance && isPlayerInClearFOV())
         {
             currentState = FSMStates.CHASE;
         }
+        */
 
         FaceTarget(nextDestination);
 
@@ -146,9 +150,10 @@ public class AlienAI : MonoBehaviour
         agent.SetDestination(nextDestination);
     }
 
+    /*
     void UpdateChaseState()
     {
-        /*
+        
         //print("Chasing!");
 
         //Sets animState int equal to 1 (which is set as the patrolling state
@@ -178,12 +183,14 @@ public class AlienAI : MonoBehaviour
         //this line isn't actually needed because the animation has movement embedded to it 
         //transform.position = Vector3.MoveTowards(transform.position, nextDestination, enemySpeed * Time.deltaTime);
         agent.SetDestination(nextDestination);
-        */
+        
     }
+    */
 
+        /*
     void UpdateAttackState()
     {
-        /*
+        
         //print("Attacking");
         anim.SetInteger("animStateAlien", 3);
         //EnemySpellCast();
@@ -207,9 +214,11 @@ public class AlienAI : MonoBehaviour
         }
 
         FaceTarget(nextDestination);
-        */
+        
     }
+   */ 
 
+        /*
     void UpdateDeadState()
     {
         //anim.SetInteger("animState", 4);
@@ -217,6 +226,7 @@ public class AlienAI : MonoBehaviour
         //isDead = true;
         Destroy(gameObject, 0.5f);
     }
+    */
 
     void FindNextPoint()
     {
@@ -224,7 +234,9 @@ public class AlienAI : MonoBehaviour
         //(0+1) % 3 -> 1
         //(1+1) % 3 -> 2
         //(2+1) % 3 -> 0
-        currentDestinationIndex = (currentDestinationIndex + 1 + wanderOffset) % wanderPoints.Length;
+        currentDestinationIndex = (currentDestinationIndex + 1) % wanderPoints.Length;
+
+        //print(currentDestinationIndex.ToString());
 
         //stores first wander point in array and returns position of it
         nextDestination = wanderPoints[currentDestinationIndex].transform.position;
@@ -247,6 +259,7 @@ public class AlienAI : MonoBehaviour
     }
 
 
+    /*
     //allows us to visualize what this is seeing/looking-for
     private void OnDrawGizmos()
     {
@@ -258,17 +271,23 @@ public class AlienAI : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, chaseDistance);
 
+        
         //represents the objects vision
         Vector3 frontRayPoint = enemyEyes.position + (enemyEyes.forward * chaseDistance);
         Vector3 leftRayPoint = Quaternion.Euler(0, fieldOfView * 0.5f, 0) * frontRayPoint;
         Vector3 rightRayPoint = Quaternion.Euler(0, -fieldOfView * 0.5f, 0) * frontRayPoint;
+        
 
+        
         //draws line that shows enemies FOV
         Debug.DrawLine(enemyEyes.position, frontRayPoint, Color.cyan);
         Debug.DrawLine(enemyEyes.position, leftRayPoint, Color.red);
         Debug.DrawLine(enemyEyes.position, rightRayPoint, Color.red);
+        
     }
+    */
 
+    /*
     bool isPlayerInClearFOV()
     {
 
@@ -289,6 +308,7 @@ public class AlienAI : MonoBehaviour
 
         return false;
     }
+    */
 
     /*
     private void OnCollisionEnter(Collision collision)

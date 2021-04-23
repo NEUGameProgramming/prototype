@@ -17,6 +17,8 @@ TagManager:
   - Card
   - Enemy
   - wanderpointAlien1
+  - wanderpointAlien2
+  - wanderpointAlien3
   layers:
   - Default
   - TransparentFX
