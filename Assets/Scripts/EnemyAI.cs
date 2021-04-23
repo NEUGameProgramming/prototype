@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -14,9 +15,12 @@ public class EnemyAI : MonoBehaviour
     bool destinationForward = false;
 
     public bool isStatic;
+    NavMeshAgent mNav;
 
     void Start()
     {
+        mNav = GetComponent<NavMeshAgent>();
+        mNav.updateRotation = false;
         if (!isStatic)
         {
             wanderPoints = GameObject.FindGameObjectsWithTag("Wander Point" + gameObject.tag);
@@ -41,6 +45,10 @@ public class EnemyAI : MonoBehaviour
                 FaceTarget(nextDestination);
                 transform.position = Vector3.MoveTowards(transform.position, nextDestination, enemySpeed * Time.deltaTime);
             }
+            FaceTarget(nextDestination);
+            //transform.position = Vector3.MoveTowards(transform.position, nextDestination, enemySpeed * Time.deltaTime);
+            mNav.SetDestination(nextDestination);
+
         }
     }
 
@@ -68,7 +76,8 @@ public class EnemyAI : MonoBehaviour
         Vector3 directionToTarget = (target - transform.position).normalized;
         directionToTarget.y = 0;
         Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 10 * Time.deltaTime);
+        // transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 10 * Time.deltaTime);
+        transform.rotation = Quaternion.LookRotation(mNav.velocity.normalized);
     }
 
     public void MooWander(Vector3 point)

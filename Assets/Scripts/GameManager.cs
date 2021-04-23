@@ -78,10 +78,10 @@ public class GameManager : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                Debug.Log("seen 0");
+                Debug.Log("seen 1");
                 MoveToClickNavMesh.curCowIndex = 1;
             }
-            if (Input.GetKeyDown(KeyCode.Alpha0))
+            if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 Debug.Log("seen 0");
                 MoveToClickNavMesh.curCowIndex = 0;
@@ -99,6 +99,7 @@ public class GameManager : MonoBehaviour
         timerText.text = countdown.ToString("f2");
     }
 
+
     bool AllCowsSafe()
     {
         foreach (GameObject cow in players)
@@ -114,7 +115,7 @@ public class GameManager : MonoBehaviour
     public void LevelLost()
     {
         Camera.main.GetComponent<AudioSource>().Stop();
-        AudioSource.PlayClipAtPoint(GameOverSFX, Camera.main.transform.position, 100);
+        AudioSource.PlayClipAtPoint(GameOverSFX, Camera.main.transform.position);
         isGameOver = true;
         gameText.text = "GAME OVER!";
         gameText.gameObject.SetActive(true);
