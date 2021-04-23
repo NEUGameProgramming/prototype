@@ -99,6 +99,7 @@ public class GameManager : MonoBehaviour
         timerText.text = countdown.ToString("f2");
     }
 
+
     bool AllCowsSafe()
     {
         foreach (GameObject cow in players)

@@ -7,6 +7,7 @@ public class LocalPanning : MonoBehaviour
     public int edgeScrollingBoundary = 10;
     public float cameraSpeed = 20f;
     public GameObject selectedObject = null;
+    Vector3 rotateLock = new Vector3(-10000, 0, 0);
     Vector3 lockDistance;
 
     public AudioClip mooSFX;
@@ -17,25 +18,28 @@ public class LocalPanning : MonoBehaviour
     void Start()
     {
         currentRotation = Camera.main.transform.eulerAngles.y;
-        lockDistance = new Vector3(Mathf.Sin((currentRotation + 180) * Mathf.PI / 180) * 65, 37f,
-            Mathf.Cos((currentRotation + 180) * Mathf.PI / 180) * 50);
+        lockDistance = new Vector3(Mathf.Sin((currentRotation + 180) * Mathf.PI / 180) * 87, 50f,
+            Mathf.Cos((currentRotation + 180) * Mathf.PI / 180) * 91);
 
         selectedObject = MoveToClickNavMesh.cowObj;
-        FocusOnTarget();
+        FocusOnTarget(selectedObject.transform.position);
     }
 
     // Update is called once per frame
     void Update()
     {
-        selectedObject = MoveToClickNavMesh.cowObj;
+        if (!GameManager.isGameOver)
+        {
+            selectedObject = MoveToClickNavMesh.cowObj;
 
-        if (Input.GetKeyDown("f") && selectedObject)
-        {
-            FocusOnTarget();
-        }
-        else
-        {
-            FreeCamera();
+            if (Input.GetKeyDown("f") && selectedObject)
+            {
+                FocusOnTarget(selectedObject.transform.position);
+            }
+            else
+            {
+                FreeCamera();
+            }
         }
     }
 
@@ -43,11 +47,15 @@ public class LocalPanning : MonoBehaviour
     {
         ZoomCamera(Input.GetAxis("Mouse ScrollWheel"));
 
-        if (Input.GetKeyDown("r"))
+        if (Input.GetKey(KeyCode.R))
         {
             RotateCamera();
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        else
+        {
+            rotateLock = new Vector3(-10000, 0, 0);
+        }
+        if (Input.GetKeyDown(KeyCode.M))
         {
             AudioSource.PlayClipAtPoint(mooSFX, Camera.main.transform.position);
         }
@@ -75,17 +83,43 @@ public class LocalPanning : MonoBehaviour
         }
     }
 
-    public void FocusOnTarget()
+    public void FocusOnTarget(Vector3 targetPos)
     {
-        transform.position = selectedObject.transform.position + lockDistance;
+        Vector3 newPos = targetPos + lockDistance;
+        newPos.y = 50f;
+        transform.position = newPos;
     }
+
 
     void RotateCamera()
     {
-        currentRotation -= 90f;
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            currentRotation += 30 * Time.deltaTime;
+        }
+        else
+        {
+            currentRotation -= 30 * Time.deltaTime;
+        }
         transform.rotation = Quaternion.Euler(30f, currentRotation, 0f);
-        lockDistance = new Vector3(Mathf.Sin((currentRotation + 180) * Mathf.PI / 180) * 60, 37f,
-            Mathf.Cos((currentRotation + 180) * Mathf.PI / 180) * 60);
+        lockDistance = new Vector3(Mathf.Sin((currentRotation + 180) * Mathf.PI / 180) * 87, 50f,
+            Mathf.Cos((currentRotation + 180) * Mathf.PI / 180) * 91);
+        if (rotateLock.x == -10000)
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ViewportPointToRay(new Vector3(.5f, .5f, 0));
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, 1 << 3))
+            {
+                Vector3 point = hit.point;
+                point.y = 0;
+                rotateLock = point;
+            }
+            else
+            {
+                FocusOnTarget(selectedObject.transform.position);
+            }
+        }
+        FocusOnTarget(rotateLock);
     }
 
     void ZoomCamera(float scroll)
