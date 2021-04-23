@@ -94,4 +94,17 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    bool AllCowsSafe()
+    {
+        foreach (GameObject cow in players)
+        {
+            if (Vector3.Distance(cow.transform.position, safeZone) > 8)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }
