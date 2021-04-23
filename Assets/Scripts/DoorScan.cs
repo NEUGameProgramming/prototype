@@ -15,13 +15,17 @@ public class DoorScan : MonoBehaviour
 
     public Material yellow;
 
-    Renderer renderer;
+    bool isScanned;
+
+    Renderer render;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        renderer = GetComponent<Renderer>();
+        doorModel.transform.position = new Vector3(doorModel.transform.position.x, -.67f, doorModel.transform.position.z);
+        isScanned = false;
+        render = GetComponent<Renderer>();
     }
 
     // Update is called once per frame
@@ -38,15 +42,17 @@ public class DoorScan : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
 
-            if (CardCount.cardCounter > 0)
+            if (!isScanned && CardCount.cardCounter > 0)
             {
                 AudioSource.PlayClipAtPoint(doorSFX, Camera.main.transform.position);
+                Debug.Log(doorAnim);
                 doorAnim.Play("open");
                 CardCount.cardCounter--;
-                renderer.material = green;
+                render.material = green;
+
             } else
             {
-                renderer.material = red;
+                render.material = red;
                 Invoke("YellowChange", 2);
             }
 
@@ -55,6 +61,6 @@ public class DoorScan : MonoBehaviour
     
     private void YellowChange()
     {
-        renderer.material = yellow;
+        render.material = yellow;
     }
 }

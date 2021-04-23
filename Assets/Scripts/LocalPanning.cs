@@ -119,7 +119,10 @@ public class LocalPanning : MonoBehaviour
                 FocusOnTarget(selectedObject.transform.position);
             }
         }
-        FocusOnTarget(rotateLock);
+        else
+        {
+            FocusOnTarget(rotateLock);
+        }
     }
 
     void ZoomCamera(float scroll)

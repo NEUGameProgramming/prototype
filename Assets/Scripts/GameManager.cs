@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public AudioClip GameOverSFX;
     public AudioClip GameWinSFX;
 
+    public int levelZoom;
+
     public static bool isGameOver = false;
     GameObject[] players;
     Vector3 safeZone;
@@ -19,6 +21,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        Camera.main.orthographicSize = levelZoom;
         isGameOver = false;
         safeZone = GameObject.FindGameObjectWithTag("Safety").transform.position;
         players = GameObject.FindGameObjectsWithTag("Player");
@@ -29,19 +32,6 @@ public class GameManager : MonoBehaviour
     {
         if (!isGameOver)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Debug.Log("seen");
-                if (MoveToClickNavMesh.curCowIndex == 0)
-                {
-                    MoveToClickNavMesh.curCowIndex = 1;
-                }
-                else if (MoveToClickNavMesh.curCowIndex == 1)
-                {
-                    MoveToClickNavMesh.curCowIndex = 0;
-                }
-                Debug.Log(MoveToClickNavMesh.curCowIndex);
-            }
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 Debug.Log("seen 0");

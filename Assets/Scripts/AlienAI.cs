@@ -14,56 +14,17 @@ public class AlienAI : MonoBehaviour
 
     public FSMStates currentState;
 
-    //public float enemySpeed = 5;
-
-    //public int chaseDistance = 10;
-
-    //public float attackDistance = 5;
-
-    //public GameObject player;
-
-    //public GameObject[] spellProjectiles;
-
-    //public GameObject wandTip;
-
-    //public float shootRate = 2.0f;
-
-    //public GameObject deadVFX;
-
-    //public Transform enemyEyes;
-
-    //public float fieldOfView = 45;
-
-    //public int wanderOffset = 0;
-
     public int alienNumber = 0;
-
-    //public int damageAmount = 20;
-
     GameObject[] wanderPoints;
 
     Animator anim;
 
     Vector3 nextDestination;
 
-    //bool isDead;
-
     //keeps track of what wander point this is heading towards
     int currentDestinationIndex = 0;
 
-    //float distanceToPlayer;
-
-    //float elapsedTime = 0;
-
-    //EnemyHealth enemyHealth;
-
-    //int health;
-
-    //Transform deadTransform;
-
     NavMeshAgent agent;
-
-    // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -73,35 +34,13 @@ public class AlienAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-
-        //health = enemyHealth.currentHealth;
-
-        /*
-        if (health <= 0)
-        {
-            currentState = FSMStates.DEAD;
-        }
-        */
-
         switch (currentState)
         {
             case FSMStates.PATROL:
                 UpdatePatrolState();
                 break;
-            /*
-            case FSMStates.CHASE:
-                UpdateChaseState();
-                break;
-            case FSMStates.ATTACK:
-                UpdateAttackState();
-                break;
-            */
 
         }
-
-        //elapsedTime += Time.deltaTime;
-
 
     }
 
@@ -109,134 +48,26 @@ public class AlienAI : MonoBehaviour
     {
         wanderPoints = GameObject.FindGameObjectsWithTag("wanderpointAlien" + alienNumber);
         anim = GetComponent<Animator>();
-        //player = GameObject.FindGameObjectWithTag("Player");
-        //wandTip = GameObject.FindGameObjectWithTag("EnemyWandTip");
         currentState = FSMStates.PATROL;
-        //enemyHealth = GetComponent<EnemyHealth>();
-        //isDead = false;
         FindNextPoint();
     }
 
     void UpdatePatrolState()
     {
-        //print("Patrolling!");
-
-        //Sets animState int equal to 1 (which is set as the patrolling state
         anim.SetInteger("animStateAlien", 1);
-
-        //resets how far this object should stop.
-        //agent.stoppingDistance = 0;
-
-        //agent.speed = 3.5f;
-
         
         if (Vector3.Distance(transform.position, nextDestination) < 2)
         {
             FindNextPoint();
         }
-        /*
-        else if (distanceToPlayer <= chaseDistance && isPlayerInClearFOV())
-        {
-            currentState = FSMStates.CHASE;
-        }
-        */
 
         FaceTarget(nextDestination);
-
-        //moves from wander point to wander point
-        //transform.position = Vector3.MoveTowards(transform.position, nextDestination, enemySpeed * Time.deltaTime);
-
-        //SetDestination is apart of the AI library
         agent.SetDestination(nextDestination);
     }
-
-    /*
-    void UpdateChaseState()
-    {
-        
-        //print("Chasing!");
-
-        //Sets animState int equal to 1 (which is set as the patrolling state
-        anim.SetInteger("animStateAlien", 2);
-
-        agent.speed = 8;
-
-        nextDestination = player.transform.position;
-
-        //resets how far this object should stop.
-        //agent.stoppingDistance = attackDistance;
-
-        //agent.speed = 5;
-
-        if (distanceToPlayer <= attackDistance)
-        {
-            currentState = FSMStates.ATTACK;
-        }
-        else if (distanceToPlayer > chaseDistance)
-        {
-            FindNextPoint();
-            currentState = FSMStates.PATROL;
-        }
-
-        FaceTarget(nextDestination);
-
-        //this line isn't actually needed because the animation has movement embedded to it 
-        //transform.position = Vector3.MoveTowards(transform.position, nextDestination, enemySpeed * Time.deltaTime);
-        agent.SetDestination(nextDestination);
-        
-    }
-    */
-
-        /*
-    void UpdateAttackState()
-    {
-        
-        //print("Attacking");
-        anim.SetInteger("animStateAlien", 3);
-        //EnemySpellCast();
-
-
-        nextDestination = player.transform.position;
-
-        if (distanceToPlayer <= attackDistance)
-        {
-            currentState = FSMStates.ATTACK;
-
-        }
-        else if (distanceToPlayer > attackDistance && distanceToPlayer <= chaseDistance)
-        {
-            currentState = FSMStates.CHASE;
-
-        }
-        else
-        {
-            currentState = FSMStates.PATROL;
-        }
-
-        FaceTarget(nextDestination);
-        
-    }
-   */ 
-
-        /*
-    void UpdateDeadState()
-    {
-        //anim.SetInteger("animState", 4);
-        deadTransform = gameObject.transform;
-        //isDead = true;
-        Destroy(gameObject, 0.5f);
-    }
-    */
 
     void FindNextPoint()
     {
-        //Allows us to continually iterate through all three points
-        //(0+1) % 3 -> 1
-        //(1+1) % 3 -> 2
-        //(2+1) % 3 -> 0
         currentDestinationIndex = (currentDestinationIndex + 1) % wanderPoints.Length;
-
-        //print(currentDestinationIndex.ToString());
 
         //stores first wander point in array and returns position of it
         nextDestination = wanderPoints[currentDestinationIndex].transform.position;

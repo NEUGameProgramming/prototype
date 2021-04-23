@@ -36,8 +36,6 @@ public class EnemyAI : MonoBehaviour
             {
                 if (tempWander.x != -10000)
                 {
-
-                    Debug.Log("HEEELLLLOOO???");
                     tempWander.x = -10000;
                 }
                 FindNextPoint();
