@@ -52,14 +52,6 @@ public class MoveToClickNavMesh : MonoBehaviour
                 {
                     mNav.destination = hit.point;
                 }
-                //if (mNav.remainingDistance <= mNav.stoppingDistance)
-                //{
-                //    moving = false;
-                //}
-                //else
-                //{
-                //    moving = true;
-                //}
             }
         }
     }
