@@ -60,22 +60,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    bool AllCowsSafe()
-    {
-        foreach (GameObject cow in players)
-        {
-            if (Vector3.Distance(cow.transform.position, safeZone) > 8)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-
     public void LevelLost()
     {
         Camera.main.GetComponent<AudioSource>().Stop();
-        AudioSource.PlayClipAtPoint(GameOverSFX, Camera.main.transform.position, 100);
+        AudioSource.PlayClipAtPoint(GameOverSFX, Camera.main.transform.position);
         isGameOver = true;
         gameText.text = "GAME OVER!";
         gameText.gameObject.SetActive(true);
