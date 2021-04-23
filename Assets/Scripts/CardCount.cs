@@ -1,33 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CardCount : MonoBehaviour
 {
 
     public static int cardCounter = 0;
 
+    public GameObject keyPanel;
+
+    Button[] keys;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        keys = keyPanel.GetComponentsInChildren<Button>();
+        keyPanel.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (cardCounter > 0)
+        {
+            keyPanel.SetActive(true);
+            SetKeys();
+        }
+        else
+        {
+            keyPanel.SetActive(false);
+        }
     }
 
-    private void OnTriggerEnter(Collider other)
+    void SetKeys()
     {
-        /*
-        if (other.gameObject.CompareTag("Card"))
+        int i = 0;
+
+        foreach (Button keyIcon in keys)
         {
-            cardCounter++;
-            Destroy(other);
-            print("adding 1");
+            if (i < cardCounter)
+            {
+                keyIcon.transform.localScale = new Vector3(1, 1, 1);
+            } else
+            {
+                keyIcon.transform.localScale = new Vector3(0, 0, 0);
+            }
+
+            i++;
         }
-        */
     }
 }

@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 667f1da9b9ce8334095b2e41a3b984d3
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Lumos
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 1a12fa872897cdb4cac325d681568f97, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
