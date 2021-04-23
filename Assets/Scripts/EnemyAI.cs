@@ -1,28 +1,28 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
     public float enemySpeed = 5;
 
     GameObject[] wanderPoints;
-    Vector3 tempWander = new Vector3(-10000, 0, 0);
+    Vector3 tempWander;
     Vector3 nextDestination;
 
     int currentDestinationIndex = 0;
     bool destinationForward = false;
 
+    float startY;
+
     public bool isStatic;
-    NavMeshAgent mNav;
 
     void Start()
     {
-        mNav = GetComponent<NavMeshAgent>();
-        mNav.updateRotation = false;
         if (!isStatic)
         {
+            startY = transform.position.y;
+            tempWander = new Vector3(-10000, 0, 0);
             wanderPoints = GameObject.FindGameObjectsWithTag("Wander Point" + gameObject.tag);
             FindNextPoint();
         }
@@ -36,19 +36,17 @@ public class EnemyAI : MonoBehaviour
             {
                 if (tempWander.x != -10000)
                 {
+
+                    Debug.Log("HEEELLLLOOO???");
                     tempWander.x = -10000;
-                    FindNextPoint();
                 }
+                FindNextPoint();
             }
-            if (nextDestination.x != 0 && nextDestination.y != 0 && nextDestination.z != 0)
+            if (nextDestination.x != 0 || nextDestination.y != 0 || nextDestination.z != 0)
             {
                 FaceTarget(nextDestination);
                 transform.position = Vector3.MoveTowards(transform.position, nextDestination, enemySpeed * Time.deltaTime);
             }
-            FaceTarget(nextDestination);
-            //transform.position = Vector3.MoveTowards(transform.position, nextDestination, enemySpeed * Time.deltaTime);
-            mNav.SetDestination(nextDestination);
-
         }
     }
 
@@ -61,6 +59,7 @@ public class EnemyAI : MonoBehaviour
         else if (wanderPoints.Length > 0)
         {
             nextDestination = wanderPoints[currentDestinationIndex].transform.position;
+            nextDestination.y = startY;
 
             if (currentDestinationIndex == wanderPoints.Length - 1 || currentDestinationIndex == 0)
             {
@@ -76,8 +75,7 @@ public class EnemyAI : MonoBehaviour
         Vector3 directionToTarget = (target - transform.position).normalized;
         directionToTarget.y = 0;
         Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);
-        // transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 10 * Time.deltaTime);
-        transform.rotation = Quaternion.LookRotation(mNav.velocity.normalized);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 10 * Time.deltaTime);
     }
 
     public void MooWander(Vector3 point)

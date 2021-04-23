@@ -6,9 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public float levelDuration = 30.0f;
-    public Text timerText;
-    float countdown;
     public Text gameText;
     public string nextLevel;
     public AudioClip GameOverSFX;
@@ -25,44 +22,13 @@ public class GameManager : MonoBehaviour
         isGameOver = false;
         safeZone = GameObject.FindGameObjectWithTag("Safety").transform.position;
         players = GameObject.FindGameObjectsWithTag("Player");
-        countdown = levelDuration;
     }
 
     // Update is called once per frame
     void Update()
     {
-        /* if (Input.GetMouseButtonDown(1))
-          {
-              Debug.Log("mouse down");
-              RaycastHit hitInfo = new RaycastHit();
-              bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo);
-              if (hit)
-              {
-                  if (hitInfo.transform.gameObject.tag == "Player")
-                  {
-                      
-                      GameObject cow = hitInfo.transform.gameObject;
-                      MoveToClickNavMesh playerScript = cow.GetComponent<MoveToClickNavMesh>();
-                      Debug.Log(playerScript.cowIndex);
-                      MoveToClickNavMesh.curCowIndex = playerScript.cowIndex;
-                  }
-              }
-          }*/
-
         if (!isGameOver)
         {
-            if (countdown > 0)
-            {
-                countdown -= Time.deltaTime;
-            }
-            else
-            {
-                countdown = 0.0f;
-                LevelLost();
-            }
-
-            SetTimerText();
-
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 Debug.Log("seen");
@@ -78,10 +44,10 @@ public class GameManager : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                Debug.Log("seen 1");
+                Debug.Log("seen 0");
                 MoveToClickNavMesh.curCowIndex = 1;
             }
-            if (Input.GetKeyDown(KeyCode.Alpha2))
+            if (Input.GetKeyDown(KeyCode.Alpha0))
             {
                 Debug.Log("seen 0");
                 MoveToClickNavMesh.curCowIndex = 0;
@@ -92,24 +58,6 @@ public class GameManager : MonoBehaviour
                 LevelWon();
             }
         }
-    }
-
-    void SetTimerText()
-    {
-        timerText.text = countdown.ToString("f2");
-    }
-
-
-    bool AllCowsSafe()
-    {
-        foreach (GameObject cow in players)
-        {
-            if (Vector3.Distance(cow.transform.position, safeZone) > 8)
-            {
-                return false;
-            }
-        }
-        return true;
     }
 
     public void LevelLost()
