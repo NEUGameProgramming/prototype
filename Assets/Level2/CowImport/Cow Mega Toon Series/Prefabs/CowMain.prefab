@@ -944,7 +944,7 @@ GameObject:
   - component: {fileID: 1955334990}
   - component: {fileID: 2061389772}
   - component: {fileID: 4747722965222087861}
-  - component: {fileID: 1955334988}
+  - component: {fileID: 7068203336047372991}
   m_Layer: 0
   m_Name: CowMain
   m_TagString: Player
@@ -1065,7 +1065,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cowIndex: 0
---- !u!114 &1955334988
+--- !u!114 &7068203336047372991
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1074,10 +1074,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6151880912772301259}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 978822276ead246188af728e8ac19b79, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a725e446f2416142953470467301857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cowIndex: 0
 --- !u!1 &6151880912772301261
 GameObject:
   m_ObjectHideFlags: 0
