@@ -7,11 +7,13 @@ public class EnemyAI : MonoBehaviour
     public float enemySpeed = 5;
 
     GameObject[] wanderPoints;
-    Vector3 tempWander = new Vector3(-10000, 0, 0);
+    Vector3 tempWander;
     Vector3 nextDestination;
 
     int currentDestinationIndex = 0;
     bool destinationForward = false;
+
+    float startY;
 
     public bool isStatic;
 
@@ -19,6 +21,8 @@ public class EnemyAI : MonoBehaviour
     {
         if (!isStatic)
         {
+            startY = transform.position.y;
+            tempWander = new Vector3(-10000, 0, 0);
             wanderPoints = GameObject.FindGameObjectsWithTag("Wander Point" + gameObject.tag);
             FindNextPoint();
         }
@@ -32,11 +36,13 @@ public class EnemyAI : MonoBehaviour
             {
                 if (tempWander.x != -10000)
                 {
+
+                    Debug.Log("HEEELLLLOOO???");
                     tempWander.x = -10000;
-                    FindNextPoint();
                 }
+                FindNextPoint();
             }
-            if (nextDestination.x != 0 && nextDestination.y != 0 && nextDestination.z != 0)
+            if (nextDestination.x != 0 || nextDestination.y != 0 || nextDestination.z != 0)
             {
                 FaceTarget(nextDestination);
                 transform.position = Vector3.MoveTowards(transform.position, nextDestination, enemySpeed * Time.deltaTime);
@@ -53,6 +59,7 @@ public class EnemyAI : MonoBehaviour
         else if (wanderPoints.Length > 0)
         {
             nextDestination = wanderPoints[currentDestinationIndex].transform.position;
+            nextDestination.y = startY;
 
             if (currentDestinationIndex == wanderPoints.Length - 1 || currentDestinationIndex == 0)
             {
