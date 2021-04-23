@@ -7,6 +7,7 @@ public class EnemyAI : MonoBehaviour
     public float enemySpeed = 5;
 
     GameObject[] wanderPoints;
+    Vector3 tempWander = new Vector3(-10000, 0, 0);
     Vector3 nextDestination;
 
     int currentDestinationIndex = 0;
@@ -29,24 +30,37 @@ public class EnemyAI : MonoBehaviour
         {
             if (Vector3.Distance(gameObject.transform.position, nextDestination) < .5f)
             {
-                FindNextPoint();
+                if (tempWander.x != -10000)
+                {
+                    tempWander.x = -10000;
+                    FindNextPoint();
+                }
             }
-
-            FaceTarget(nextDestination);
-            transform.position = Vector3.MoveTowards(transform.position, nextDestination, enemySpeed * Time.deltaTime);
+            if (nextDestination.x != 0 && nextDestination.y != 0 && nextDestination.z != 0)
+            {
+                FaceTarget(nextDestination);
+                transform.position = Vector3.MoveTowards(transform.position, nextDestination, enemySpeed * Time.deltaTime);
+            }
         }
     }
 
     void FindNextPoint()
     {
-        nextDestination = wanderPoints[currentDestinationIndex].transform.position;
-
-        if (currentDestinationIndex == wanderPoints.Length - 1 || currentDestinationIndex == 0)
+        if (tempWander.x != -10000)
         {
-            destinationForward = !destinationForward;
+            nextDestination = tempWander;
         }
+        else if (wanderPoints.Length > 0)
+        {
+            nextDestination = wanderPoints[currentDestinationIndex].transform.position;
 
-        currentDestinationIndex += (destinationForward ? 1 : -1);
+            if (currentDestinationIndex == wanderPoints.Length - 1 || currentDestinationIndex == 0)
+            {
+                destinationForward = !destinationForward;
+            }
+
+            currentDestinationIndex += destinationForward ? 1 : -1;
+        }
     }
 
     void FaceTarget(Vector3 target)
@@ -55,5 +69,11 @@ public class EnemyAI : MonoBehaviour
         directionToTarget.y = 0;
         Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 10 * Time.deltaTime);
+    }
+
+    public void MooWander(Vector3 point)
+    {
+        tempWander = point;
+        FindNextPoint();
     }
 }

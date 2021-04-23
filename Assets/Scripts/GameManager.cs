@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour
     public void LevelLost()
     {
         Camera.main.GetComponent<AudioSource>().Stop();
-        AudioSource.PlayClipAtPoint(GameOverSFX, Camera.main.transform.position);
+        AudioSource.PlayClipAtPoint(GameOverSFX, Camera.main.transform.position, 100);
         isGameOver = true;
         gameText.text = "GAME OVER!";
         gameText.gameObject.SetActive(true);
