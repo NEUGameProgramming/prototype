@@ -24,12 +24,14 @@ public class MoveToClickNavMesh : MonoBehaviour
             cowObj = gameObject;
         }
         mNav = GetComponent<NavMeshAgent>();
-
+        print(cowObj);
         anim = GetComponent<Animator>();
         anim.SetInteger("animState", 0);
 
         buttons = cowPanel.GetComponentsInChildren<Button>();
         UpdateCowUI();
+
+        print("NAVMESH");
     }
 
     // Update is called once per frame

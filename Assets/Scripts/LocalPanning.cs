@@ -6,7 +6,7 @@ public class LocalPanning : MonoBehaviour
 {
     public int edgeScrollingBoundary = 10;
     public float cameraSpeed = 20f;
-    public GameObject selectedObject = null;
+    public GameObject selectedObject;
     Vector3 rotateLock = new Vector3(-10000, 0, 0);
     Vector3 lockDistance;
 
@@ -23,6 +23,7 @@ public class LocalPanning : MonoBehaviour
 
         selectedObject = MoveToClickNavMesh.cowObj;
         FocusOnTarget(selectedObject.transform.position);
+        print("PANNING");
     }
 
     // Update is called once per frame
@@ -129,7 +130,7 @@ public class LocalPanning : MonoBehaviour
     {
         if ((Camera.main.orthographicSize > 5 && scroll < 0) || (Camera.main.orthographicSize < 100 && scroll > 0))
         {
-            Camera.main.orthographicSize += scroll;
+            Camera.main.orthographicSize +=  2 * scroll;
         }
     }
 }

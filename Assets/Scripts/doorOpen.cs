@@ -11,6 +11,8 @@ public class doorOpen : MonoBehaviour
 
     public AudioClip doorSFX;
 
+    bool isUsed = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -31,9 +33,13 @@ public class doorOpen : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player"))
         {
-            print("Moving door");
-            AudioSource.PlayClipAtPoint(doorSFX, Camera.main.transform.position);
-            doorAnim.Play("open");
+            if (!isUsed)
+            {
+                isUsed = true;
+                print("Moving door");
+                AudioSource.PlayClipAtPoint(doorSFX, Camera.main.transform.position);
+                doorAnim.Play("open");
+            }
             
         }
     }

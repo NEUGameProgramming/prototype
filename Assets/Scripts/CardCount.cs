@@ -10,6 +10,8 @@ public class CardCount : MonoBehaviour
 
     public GameObject keyPanel;
 
+    bool isUsed = false;
+
     Button[] keys;
 
     // Start is called before the first frame update
@@ -22,8 +24,9 @@ public class CardCount : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (cardCounter > 0)
+        if (!isUsed && cardCounter > 0)
         {
+            isUsed = true;
             keyPanel.SetActive(true);
             SetKeys();
         }
