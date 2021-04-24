@@ -32,17 +32,6 @@ public class GameManager : MonoBehaviour
     {
         if (!isGameOver)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                Debug.Log("seen 0");
-                MoveToClickNavMesh.curCowIndex = 1;
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha0))
-            {
-                Debug.Log("seen 0");
-                MoveToClickNavMesh.curCowIndex = 0;
-            }
-
             if (AllCowsSafe())
             {
                 LevelWon();

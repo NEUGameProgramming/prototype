@@ -10,6 +10,7 @@ public class MoveToClickNavMesh : MonoBehaviour
     public static int curCowIndex = 1;
     public int cowIndex = 1;
     public static GameObject cowObj;
+    LocalPanning localPanning;
 
     public GameObject cowPanel;
     Button[] buttons;
@@ -26,11 +27,9 @@ public class MoveToClickNavMesh : MonoBehaviour
         mNav = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         anim.SetInteger("animState", 0);
-
+        localPanning = FindObjectOfType<LocalPanning>();
         buttons = cowPanel.GetComponentsInChildren<Button>();
         UpdateCowUI();
-
-        print("NAVMESH");
     }
 
     // Update is called once per frame
@@ -50,9 +49,6 @@ public class MoveToClickNavMesh : MonoBehaviour
             {
                 anim.SetInteger("animState", 0);
             }
-
-
-
 
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
@@ -77,6 +73,7 @@ public class MoveToClickNavMesh : MonoBehaviour
             if (curCowIndex == cowIndex)
             {
                 cowObj = gameObject;
+                localPanning.FocusOnTarget(cowObj.transform.position);
             }
 
             if (previousCowUI != curCowIndex)
@@ -92,6 +89,7 @@ public class MoveToClickNavMesh : MonoBehaviour
 
     void UpdateCowUI()
     {
+        buttons = cowPanel.GetComponentsInChildren<Button>();
         int i = 1;
 
         foreach(Button cowIcon in buttons)
