@@ -25,6 +25,7 @@ public class GameManage : MonoBehaviour
         isGameOver = false;
         safeZone = GameObject.FindGameObjectWithTag("Safety").transform.position;
         players = GameObject.FindGameObjectsWithTag("Player");
+        gameText.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -44,7 +45,7 @@ public class GameManage : MonoBehaviour
         Camera.main.GetComponent<AudioSource>().Stop();
         AudioSource.PlayClipAtPoint(GameOverSFX, Camera.main.transform.position);
         isGameOver = true;
-        gameText.text = "GAME OVER!";
+        gameText.text = "GAME  OVER!";
         gameText.gameObject.SetActive(true);
 
         Invoke("LoadCurrentLevel", 5.224f);
@@ -55,7 +56,7 @@ public class GameManage : MonoBehaviour
         Camera.main.GetComponent<AudioSource>().Stop();
         isGameOver = true;
         AudioSource.PlayClipAtPoint(GameWinSFX, Camera.main.transform.position);
-        gameText.text = "YOU WIN!";
+        gameText.text = "YOU  WIN!";
         gameText.gameObject.SetActive(true);
 
         if (!string.IsNullOrEmpty(nextLevel))
@@ -78,7 +79,7 @@ public class GameManage : MonoBehaviour
     {
         foreach (GameObject cow in players)
         {
-            if (Vector3.Distance(cow.transform.position, safeZone) > 8)
+            if (Vector3.Distance(cow.transform.position, safeZone) > 12)
             {
                 return false;
             }
