@@ -24,15 +24,18 @@ public class CardCount : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isUsed && cardCounter > 0)
+        if (!isUsed)
         {
-            isUsed = true;
-            keyPanel.SetActive(true);
-            SetKeys();
-        }
-        else
-        {
-            keyPanel.SetActive(false);
+            if (cardCounter > 0)
+            {
+                isUsed = true;
+                keyPanel.SetActive(true);
+                SetKeys();
+            }
+            else
+            {
+                keyPanel.SetActive(false);
+            }
         }
     }
 
