@@ -8,7 +8,7 @@ public class MoveToClickNavMesh : MonoBehaviour
 {
     private NavMeshAgent mNav;
     public static int curCowIndex = 1;
-    public int cowIndex = 0;
+    public int cowIndex = 1;
     public static GameObject cowObj;
 
     public GameObject cowPanel;
@@ -24,7 +24,6 @@ public class MoveToClickNavMesh : MonoBehaviour
             cowObj = gameObject;
         }
         mNav = GetComponent<NavMeshAgent>();
-        print(cowObj);
         anim = GetComponent<Animator>();
         anim.SetInteger("animState", 0);
 
@@ -40,7 +39,6 @@ public class MoveToClickNavMesh : MonoBehaviour
 
         if (!GameManager.isGameOver)
         {
-
             int previousCowUI = curCowIndex;
    
 
@@ -66,28 +64,6 @@ public class MoveToClickNavMesh : MonoBehaviour
                 curCowIndex = 2;
 
             }
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if (curCowIndex == 2)
-                {
-
-                    curCowIndex = 1;
-                    
-
-                }
-                else
-                {
-                    curCowIndex = 2;
-                }
-
-            }
-
-            
-
-            //print(curCowIndex);
-
-
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Input.GetMouseButtonDown(0) && (curCowIndex == cowIndex))
@@ -96,14 +72,6 @@ public class MoveToClickNavMesh : MonoBehaviour
                 {
                     mNav.destination = hit.point;
                 }
-                //if (mNav.remainingDistance <= mNav.stoppingDistance)
-                //{
-                //    moving = false;
-                //}
-                //else
-                //{
-                //    moving = true;
-                //}
             }
 
             if (curCowIndex == cowIndex)

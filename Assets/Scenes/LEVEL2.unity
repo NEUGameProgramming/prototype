@@ -6821,7 +6821,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151880912772210155, guid: 3550e141fa9694c4cafbbe124acacf7c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 83.6
+      value: 229.4
       objectReference: {fileID: 0}
     - target: {fileID: 6151880912772210155, guid: 3550e141fa9694c4cafbbe124acacf7c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -13795,7 +13795,7 @@ MonoBehaviour:
   gameText: {fileID: 517462287}
   nextLevel: LEVEL3
   GameOverSFX: {fileID: 8300000, guid: be52133097a0740d2855d657527c16ea, type: 3}
-  GameWinSFX: {fileID: 0}
+  GameWinSFX: {fileID: 8300000, guid: c6fd37b57eebe499eac91c9758548e9d, type: 3}
   levelZoom: 30
 --- !u!4 &712587610
 Transform:
@@ -13821,7 +13821,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c6fd37b57eebe499eac91c9758548e9d, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -17524,7 +17524,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6151880912772210155, guid: 3550e141fa9694c4cafbbe124acacf7c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -677.7
+      value: -568.1
       objectReference: {fileID: 0}
     - target: {fileID: 6151880912772210155, guid: 3550e141fa9694c4cafbbe124acacf7c, type: 3}
       propertyPath: m_LocalRotation.w
