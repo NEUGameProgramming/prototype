@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class CardCount : MonoBehaviour
 {
-
     public static int cardCounter = 0;
 
     public GameObject keyPanel;
@@ -48,7 +47,8 @@ public class CardCount : MonoBehaviour
             if (i < cardCounter)
             {
                 keyIcon.transform.localScale = new Vector3(1, 1, 1);
-            } else
+            }
+            else
             {
                 keyIcon.transform.localScale = new Vector3(0, 0, 0);
             }
