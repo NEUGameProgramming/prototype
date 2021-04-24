@@ -53,11 +53,19 @@ public class MoveToClickNavMesh : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 curCowIndex = 1;
+                if (cowIndex == curCowIndex)
+                {
+                    localPanning.FocusOnTarget(gameObject.transform.position);
+                }
 
             }
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 curCowIndex = 2;
+                if (cowIndex == curCowIndex)
+                {
+                    localPanning.FocusOnTarget(gameObject.transform.position);
+                }
 
             }
             RaycastHit hit;
@@ -73,7 +81,6 @@ public class MoveToClickNavMesh : MonoBehaviour
             if (curCowIndex == cowIndex)
             {
                 cowObj = gameObject;
-                localPanning.FocusOnTarget(cowObj.transform.position);
             }
 
             if (previousCowUI != curCowIndex)
@@ -81,9 +88,6 @@ public class MoveToClickNavMesh : MonoBehaviour
                 UpdateCowUI();
             }
 
-        } else
-        {
-            anim.SetInteger("animState", 2);
         }
     }
 
