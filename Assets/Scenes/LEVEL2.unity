@@ -39866,6 +39866,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 01a0bafebc398a74ca76faf41fccf5cf, type: 3}
+    - target: {fileID: 1209757511933233337, guid: 80906b598f19cf04fae4d17a4d957d50, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -8.9
+      objectReference: {fileID: 0}
     - target: {fileID: 1209757512054095879, guid: 80906b598f19cf04fae4d17a4d957d50, type: 3}
       propertyPath: m_Name
       value: StartingText
@@ -39973,6 +39977,42 @@ PrefabInstance:
     - target: {fileID: 1209757512333970374, guid: 80906b598f19cf04fae4d17a4d957d50, type: 3}
       propertyPath: m_LocalScale.x
       value: 10.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209757512333970374, guid: 80906b598f19cf04fae4d17a4d957d50, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209757512947142374, guid: 80906b598f19cf04fae4d17a4d957d50, type: 3}
+      propertyPath: m_Text
+      value: Ah  shucks!  You've  been  abducted  by  aliens!  Don't  get  caught 
+        by  them  roaming  the  ship.  Luckily  you  have  a  friend  from  another 
+        planet!  Work  together  to  get  both  of  you  to  the  green  tiles! 
+        Use  the  numbers  to  switch  between  cows.  Collect  the  green  cards 
+        and  find  the  card  scanners  to  open  the  doors!
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209757512947142374, guid: 80906b598f19cf04fae4d17a4d957d50, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209757512947142375, guid: 80906b598f19cf04fae4d17a4d957d50, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 523.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209757512947142375, guid: 80906b598f19cf04fae4d17a4d957d50, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1709.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209757512947142375, guid: 80906b598f19cf04fae4d17a4d957d50, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209757512947142375, guid: 80906b598f19cf04fae4d17a4d957d50, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209757512947142375, guid: 80906b598f19cf04fae4d17a4d957d50, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 20.7
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1209757512054095882, guid: 80906b598f19cf04fae4d17a4d957d50, type: 3}
