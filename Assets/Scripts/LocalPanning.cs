@@ -29,7 +29,7 @@ public class LocalPanning : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameManager.isGameOver)
+        if (!GameManage.isGameOver)
         {
             selectedObject = MoveToClickNavMesh.cowObj;
 

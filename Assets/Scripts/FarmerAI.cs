@@ -29,7 +29,7 @@ public class FarmerAI : MonoBehaviour
 
     void Update()
     {
-        if (!isStatic && !GameManager.isGameOver)
+        if (!isStatic && !GameManage.isGameOver)
         {
             if (Vector3.Distance(gameObject.transform.position, nextDestination) < .5f)
             {

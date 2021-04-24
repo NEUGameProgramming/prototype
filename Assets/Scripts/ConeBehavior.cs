@@ -18,19 +18,19 @@ public class ConeBehavior : MonoBehaviour
     Vector3 direction;
     Vector3 perpendicular;
 
-    GameManager manager;
+    GameManage manager;
 
     public bool rotation;
 
     void Start()
     {
-        manager = FindObjectOfType<GameManager>();
+        manager = FindObjectOfType<GameManage>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (rotation && !GameManager.isGameOver)
+        if (rotation && !GameManage.isGameOver)
         {
             transform.rotation = Quaternion.Euler(new Vector3(0, lookCenter + lookRadius * Mathf.Sin(Time.time / 2 * lookSpeed), 0));
         }
@@ -38,7 +38,7 @@ public class ConeBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!GameManager.isGameOver && other.CompareTag("Player"))
+        if (!GameManage.isGameOver && other.CompareTag("Player"))
         {
             farmerPosition = gameObject.transform.position;
             cowPosition = other.transform.position;

@@ -36,7 +36,7 @@ public class MoveToClickNavMesh : MonoBehaviour
     void Update()
     {
 
-        if (!GameManager.isGameOver)
+        if (!GameManage.isGameOver)
         {
             int previousCowUI = curCowIndex;
    
