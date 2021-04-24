@@ -9,6 +9,7 @@ public class EnemyAI : MonoBehaviour
     GameObject[] wanderPoints;
     Vector3 tempWander;
     Vector3 nextDestination;
+    Animator anim;
 
     int currentDestinationIndex = 0;
     bool destinationForward = false;
@@ -16,6 +17,8 @@ public class EnemyAI : MonoBehaviour
     float startY;
 
     public bool isStatic;
+
+    public bool isFarmer;
 
     void Start()
     {
@@ -26,10 +29,18 @@ public class EnemyAI : MonoBehaviour
             wanderPoints = GameObject.FindGameObjectsWithTag("Wander Point" + gameObject.tag);
             FindNextPoint();
         }
+        if (!isFarmer && !isStatic)
+        {
+            anim = GetComponent<Animator>();
+        }
     }
 
     void Update()
     {
+        if (!isFarmer && !isStatic)
+        {
+            anim.SetInteger("animStateAlien", 1);
+        }
         if (!isStatic && !GameManager.isGameOver)
         {
             if (Vector3.Distance(gameObject.transform.position, nextDestination) < .5f)
